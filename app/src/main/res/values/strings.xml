@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Trapped</string>
-    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
-
+    <string name="protagonist_name">AMENA</string>
+    <string name="story_file">story.xml</string>
 </resources>

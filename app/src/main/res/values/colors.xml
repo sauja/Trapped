@@ -11,5 +11,9 @@
     <color name="white">#FFFFFF</color>
     <color name="colorSendRow">#ffeb3b</color>
     <color name="colorFromRow">#fbc02d</color>
+    <color name="button_normal">#efebe9</color>
+    <color name="button_pressed">#f44336</color>
+    <color name="button_highlight">#3F51B5</color>
+    <color name="button_pressed_static">#FF5722</color>
 </resources>
 

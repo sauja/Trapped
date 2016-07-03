@@ -3,18 +3,16 @@ package com.thehrmsinc.trapped;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
-
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
 
 public class SplashScreen extends AppCompatActivity {
     long storyReadPointer;
-    private static long SPLASH_TIME_OUT=2000;
-    private static String TAG="SplashScreen";
+    private static long SPLASH_TIME_OUT = 2000;
+    private static String TAG = "SplashScreen";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +62,7 @@ public class SplashScreen extends AppCompatActivity {
 
             //add words read counter
             SharedPreferences settings = getSharedPreferences(getString(R.string.SETTINGS_FILE), MODE_PRIVATE);
-            storyReadPointer = settings.getLong("storyReadPointer",MODE_PRIVATE);
+            storyReadPointer = settings.getLong("storyReadPointer", MODE_PRIVATE);
 
             return null;
         }
@@ -75,21 +73,16 @@ public class SplashScreen extends AppCompatActivity {
             // After completing http call
             // will close this activity and lauch main activity
             Handler handler = new Handler();
-            handler.postDelayed(new Runnable(){
+            handler.postDelayed(new Runnable() {
                 @Override
-                public void run(){
+                public void run() {
                     Intent i = new Intent(SplashScreen.this, MainPage.class);
                     i.putExtra("storyReadPointer", storyReadPointer);
                     startActivity(i);
                     finish();
                 }
             }, SPLASH_TIME_OUT);
-
-
             // close this activity
-
         }
-
     }
-
 }

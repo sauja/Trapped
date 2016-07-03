@@ -7,20 +7,19 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.thehrmsinc.trapped.Database.Messages;
+
 import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Created by Acer on 5/18/2016.
+ * Created by sauja on 5/18/2016.
  */
 public class SendFromListCustomAdaptor extends ArrayAdapter {
 
     public static final int TYPE_FROM = 0;
     public static final int TYPE_SEND = 1;
 
-
-    private ArrayList<SendFromListRow> objects;
-
+    private ArrayList<Messages> objects;
     @Override
     public int getViewTypeCount() {
         return 2;
@@ -30,7 +29,7 @@ public class SendFromListCustomAdaptor extends ArrayAdapter {
     public int getItemViewType(int position) {
         return objects.get(position).getType();
     }
-    public SendFromListCustomAdaptor(Context context, int resource, ArrayList<SendFromListRow> objects) {
+    public SendFromListCustomAdaptor(Context context, int resource, ArrayList<Messages> objects) {
         super(context, resource, objects);
         this.objects = objects;
     }
@@ -38,7 +37,7 @@ public class SendFromListCustomAdaptor extends ArrayAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         ViewHolder viewHolder = null;
-        SendFromListRow sendFromListRow = objects.get(position);
+        Messages sendFromListRow = objects.get(position);
         int sendFromListRowType = getItemViewType(position);
 
 
@@ -50,8 +49,9 @@ public class SendFromListCustomAdaptor extends ArrayAdapter {
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.send_row, null);
             }
 
-            TextView textView = (TextView) convertView.findViewById(R.id.rowTextView);
-            viewHolder = new ViewHolder(textView);
+            TextView chatTextView = (TextView) convertView.findViewById(R.id.rowTextView);
+            TextView chatSourceView=(TextView) convertView.findViewById(R.id.rowTextName) ;
+            viewHolder = new ViewHolder(chatTextView,chatSourceView);
 
             convertView.setTag(viewHolder);
 
@@ -59,14 +59,8 @@ public class SendFromListCustomAdaptor extends ArrayAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.getText().setText(sendFromListRow.getText());
-
+        viewHolder.getChatTextView().setText(sendFromListRow.getChatText());
+        viewHolder.getChatSourceView().setText(sendFromListRow.getChatSource());
         return convertView;
-    }
-
-    public void refresh(List<SendFromListRow> items)
-    {
-
-        notifyDataSetChanged();
     }
 }

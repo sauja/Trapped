@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/rowTextView"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/bubble_layout_parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:textSize="14sp"
-        android:text="Test Name"
-        android:layout_gravity="left"
-        android:background="@color/colorFromRow">
-    </TextView>
-</LinearLayout>
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/bubble_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/from_bubble"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/rowTextName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxEms="17"
+                android:layout_gravity="left"
+                android:text=""
+                android:textColor="@android:color/holo_blue_dark"
+                />
+            <TextView
+                android:id="@+id/rowTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxEms="17"
+                android:layout_gravity="left"
+                android:text=""
+
+                android:textColor="@android:color/background_dark"
+                 />
+        </LinearLayout>
+
+    </LinearLayout>
