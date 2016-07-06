@@ -20,6 +20,7 @@ import com.google.gson.Gson;
 import com.thehrmsinc.trapped.Database.Messages;
 import com.thehrmsinc.trapped.notification.NotificationHelper;
 import com.thehrmsinc.trapped.storyblock.Bot;
+import com.thehrmsinc.trapped.storyblock.QuestionBlock;
 import com.thehrmsinc.trapped.storyblock.StoryBlock;
 
 import java.util.ArrayList;
@@ -104,6 +105,7 @@ public class MainPage extends AppCompatActivity {
         }
         listView = (ListView) findViewById(R.id.listView);
         customAdapter = new SendFromListCustomAdaptor(this, R.id.rowTextView, items);
+        hideSystemUI();
         listView.setAdapter(customAdapter);
         if (items.size() == 0) {
             if (settings.contains("userName")) {
@@ -124,9 +126,10 @@ public class MainPage extends AppCompatActivity {
                                         hideSystemUI();
                                         userName = userInput.getText().toString();
                                         //Log.e(TAG, "UserName: " + userName);
-                                        parseFile("1");
                                         editor.putBoolean("notification",false);
                                         editor.apply();
+                                        parseFile("1");
+
 
                                     }
                                 });
@@ -198,12 +201,12 @@ public class MainPage extends AppCompatActivity {
                 breakFlag = true;
                 break;
             }
-            new LongOperation(getRemovedText(options[i].getText()), getString(R.string.protagonist_name), false).execute("");
+            new LongOperation(getRemovedText(options[i].getText()), getString(R.string.protagonist_name), false,clickedButton).execute("");
 
 
         }
         if (!breakFlag)
-            new LongOperation("", "", true).execute("");
+            new LongOperation("", "", true, clickedButton).execute("");
 
     }
 
@@ -212,11 +215,13 @@ public class MainPage extends AppCompatActivity {
         boolean isLast;
         String chatSource;
         String chatText;
+        int clickedButton;
 
-        LongOperation(String chatText, String chatSource, boolean isLast) {
+        LongOperation(String chatText, String chatSource, boolean isLast, int clickedButton) {
             this.chatSource = chatSource;
             this.chatText = chatText;
             this.isLast = isLast;
+            this.clickedButton=clickedButton;
         }
 
         @Override
@@ -243,9 +248,9 @@ public class MainPage extends AppCompatActivity {
 
             customAdapter.notifyDataSetChanged();
             if (isLast) {
-                Log.e(TAG,"Parse next block:" +block.getNextBlockName());
+                Log.e(TAG,"Parse next block:" +block.getQuestions().get(clickedButton).getNextBlock());
                 //btn[clickedButton].setBackgroundColor(0xFFEFEBE9);
-                parseFile(block.getNextBlockName());
+                parseFile(block.getQuestions().get(clickedButton).getNextBlock());
                 clickedButton = -1;
                 if (settings.contains("block")) {
                     editor.remove("block");
@@ -275,15 +280,25 @@ public class MainPage extends AppCompatActivity {
 
     public void parseFile(String nextblock) {
         hideSystemUI();
+        if(!block.getBlockName().equals("end")) {
+            block = StoryBlock.getNextBlock(nextblock, context);
 
-        block = StoryBlock.getNextBlock(nextblock, context);
-
-        String questions[] = block.getQuestions().toArray(new String[block.getQuestions().size()]);
-        // Log.e(TAG,"Question length "+questions.length);
-        for (int i = 0; i < questions.length; i++) {
-            btn[i].setText(questions[i]);
+            QuestionBlock[] questions = block.getQuestions().toArray(new QuestionBlock[block.getQuestions().size()]);
+            Log.e(TAG, "Question length " + questions.length);
+            Log.e(TAG, "Block " + block.toString());
+            for (int i = 0; i < questions.length; i++) {
+                btn[i].setText(questions[i].getQuestion());
+                Log.e(TAG, "Question  " + " i " + questions.length);
+            }
+            for (int i = 0; i < questions.length; i++) {
+                btn[i].setVisibility(Button.VISIBLE);
+                btn[i].setClickable(true);
+            }
+            for (int i = questions.length; i < 3; i++) {
+                btn[i].setVisibility(Button.GONE);
+            }
         }
-        if (questions.length == 1) {
+        /*if (questions.length == 1) {
             btn[0].setVisibility(Button.VISIBLE);
             btn[0].setClickable(true);
             btn[1].setVisibility(Button.GONE);
@@ -301,7 +316,7 @@ public class MainPage extends AppCompatActivity {
             btn[1].setClickable(true);
             btn[2].setVisibility(Button.VISIBLE);
             btn[2].setClickable(true);
-        }
+        }*/
     }
 
     public String getRemovedText(String text) {
@@ -402,12 +417,12 @@ public class MainPage extends AppCompatActivity {
                     break;
                 }
                 Log.e(TAG, "In Rusume: " + options[i].getText());
-                new LongOperation(getRemovedText(options[i].getText()), getString(R.string.protagonist_name), false).execute("");
+                new LongOperation(getRemovedText(options[i].getText()), getString(R.string.protagonist_name), false, clickedButton).execute("");
 
 
             }
             if (!breakFlag)
-                new LongOperation("", "", true).execute("");
+                new LongOperation("", "", true, clickedButton).execute("");
         }
         else
         {
