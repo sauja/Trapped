@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<story>
+    <block name="1">
+        <ques next="2">Incomming message from an unknown number (ACCEPT)</ques>
+        <option>
+            <bot>Hey..</bot>
+            <bot >I don't know where to start..</bot>
+            <bot>My name is Amena..i think..</bot>
+        </option>
+    </block>
+    <block name="2">
+        <ques next="3">What do you mean, you think?!</ques>
+        <ques next="3">No I am not interested in making friends for free..!</ques>
+        <option>
+            <bot >I don't know if I can explain..but I don't remember anything before the last 15minutes..
+            </bot>
+            <bot delay="3">I think my name is Amena because its tattooed on my forearm..</bot>
+            <bot>You've gotta help me..USERNAME</bot>
+        </option>
+        <option>
+            <bot>Whoa..no..I am not that..or like that..</bot>
+            <bot>I mean I am friendly..I think..but I am not looking to do that..</bot>
+            <bot>Please don't assume this to be a joke..</bot>
+            <bot>I really need some help..</bot>
+            <bot>I don't know if I can explain..but I don't remember anything before the last 15minutes..</bot>
+            <bot>I think my name is Amena because its tattooed on my forearm..</bot>
+            <bot>And this phone is the only thing that I found around here..</bot>
+            <bot>Its all dark in here..not much space to move about..a few strands of light coming through the wood..</bot>
+            <bot>And the dim light of this phone..</bot>
+            <bot>And its battery is about to run out as well..47%..</bot>
+            <bot>You've gotta help me..(USER)</bot>
+        </option>
+    </block>
+    <block name="3">
+        <ques next="4">How do you know my name?</ques>
+        <ques next="4">Okay you knowing my name..thats creepy..</ques>
+        <ques next="4">Abba dabba chabba</ques>
+        <option>
+            <bot>Yeah its stored on this phone..along with your phone number..</bot>
+            <bot>Thats the only contact on this phone..you are the only contact that I have..</bot>
+            <bot>I am scared..help me</bot>
+        </option>
+        <option>
+            <bot>Noo..I am not creeping you out..I myself am freaking out..</bot>
+            <bot>Your name is stored as a contact on this phone..thats how I have your number..and you are my only contact..
+            </bot>
+            <bot>I can barely move..help me (USER)</bot>
+        </option>
+        <option>
+            <bot>ABC</bot>
+            <bot>XYZ</bot>
+            <bot>PQR</bot>
+        </option>
+    </block>
+    <block name="4">
+        <ques next="5">Okay..whats wrong?</ques>
+        <ques next="5">Still not believing you!</ques>
+        <option>
+            <bot>Whats wrong is that I seem to be trapped in some sort of wooden box..a coffin maybe..
+            </bot>
+            <bot>I can barely move..I can even barely breathe..</bot>
+            <bot>I am bleeding from my head..and my feet feel numb..</bot>
+            <bot>And this top of this box..or coffin..it won't budge..</bot>
+            <bot>And I don't know where I am..</bot>
+            <bot>So yeah..thats what is wrong..</bot>
+        </option>
+        <option>
+            <bot>Oh for the love of God..or Allah..or whatever faith you follow..you have to help me..</bot>
+            <bot>I am not joking..</bot>
+            <bot>Why would I..?!</bot>
+            <bot>I seem to be trapped in some sort of wooden box..a coffin maybe..</bot>
+            <bot>I can barely move..I can even barely breathe..</bot>
+            <bot>I am bleeding from my head..and my feet feel numb..</bot>
+            <bot>And this top of this box..or coffin..it won't budge..</bot>
+            <bot>And I don't know where I am..</bot>
+            <bot>So I really have bigger problems right now than playing April fools with you(USER)..
+            </bot>
+            <bot>You seem to be my only contact to the outside world..my only hope..</bot>
+        </option>
+    </block>
+    <block name="5">
+        <ques next="end">Hey calm down..I'm trying to help you here..</ques>
+        <ques next="end">Okay lets say I believe you..how can I help you?</ques>
+        <ques next="end">Okay you seem fine enough to be sarcastic about this whole situation..</ques>
+
+        <option>
+            <bot>I'm sorry..I'm just freaked out..and this phone's battery is running out faster than ever..</bot>
+            <bot>Stupid smartphones..</bot>
+            <bot>Its 45% now..</bot>
+            <bot>Fuck!</bot>
+        </option>
+        <option>
+            <bot>Thank you for believing me..</bot>
+            <bot>You have to get me outta here..help me think of something..</bot>
+            <bot>Am I gonna die in here..shit!</bot>
+        </option>
+        <option>
+            <bot>I guess thats something that I can still remember..</bot>
+            <bot>Not much else..</bot>
+            <bot>I feel like I am in my twenties..</bot>
+            <bot>But I can't be sure..</bot>
+            <bot>I have been trying to call for help..</bot>
+            <bot>But somehow my voice is too weak to be heard through this thick wood..</bot>
+            <bot>And I don't feel any movement outside..</bot>
+        </option>
+    </block>
+    <block name="end">
+        <ques  next="">THE END!!!</ques>
+        <option></option>
+    </block>
+</story>
