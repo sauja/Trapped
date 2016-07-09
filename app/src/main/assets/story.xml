@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <story>
     <block name="1">
-        <ques next="2">Incomming message from an unknown number (ACCEPT)</ques>
-        <option>
-            <bot>Hey..</bot>
-            <bot >I don't know where to start..</bot>
-            <bot>My name is Amena..i think..</bot>
-        </option>
-    </block>
+    <ques next="2">Incomming message from an unknown number (ACCEPT)</ques>
+    <option>
+        <bot>Hey..</bot>
+        <bot >I don't know where to start..</bot>
+        <bot>My name is Amena..i think..</bot>
+    </option>
+</block>
     <block name="2">
         <ques next="3">What do you mean, you think?!</ques>
         <ques next="3">No I am not interested in making friends for free..!</ques>
         <option>
             <bot >I don't know if I can explain..but I don't remember anything before the last 15minutes..
             </bot>
-            <bot delay="3">I think my name is Amena because its tattooed on my forearm..</bot>
+            <bot delay="0">I think my name is Amena because its tattooed on my forearm..</bot>
             <bot>You've gotta help me..USERNAME</bot>
         </option>
         <option>
